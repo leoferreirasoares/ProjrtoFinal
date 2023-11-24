@@ -1,0 +1,25 @@
+.g-bg-lightblue-radialgradient-circle {
+    background-image: radial-gradient(circle farthest-corner at 75% 95%, #bbb, #2e3c56);
+    background-repeat: no-repeat;
+}
+.g-bg-white {
+    background-color: #274275!important;
+}
+.u-btn-primary {
+    color: #fff;
+    background-color: #00256b;
+}
+.u-btn-primary:hover, .u-btn-primary.active {
+    border-color: #4a6fd5;
+    background-color: #382cd8; 
+}
+.u-btn-primary.g-btn-hover-reset:hover, .u-btn-primary.g-btn-hover-reset.active {
+    background-color: #382cd8;
+    border-color: #4a6fd5; 
+}
+.g-color-black {
+    color: #fbfbfb !important;
+}
+.g-color-gray-dark-v2 {
+    color: #fff !important;
+}
