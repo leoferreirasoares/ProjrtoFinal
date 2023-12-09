@@ -1,6 +1,6 @@
 <footer id="footer" class="u-footer--bottom-sticky g-bg-white g-color-gray-dark-v6 g-brd-top g-brd-gray-light-v7 g-pa-20">
     <div class="row align-items-center">
-      <!-- Footer Nav -->
+      <!-- Footer Nav 
       <div class="col-md-4 g-mb-10 g-mb-0--md">
         <ul class="list-inline text-center text-md-left mb-0">
           <li class="list-inline-item">
@@ -20,9 +20,9 @@
           </li>
         </ul>
       </div>
-      <!-- End Footer Nav -->
+      End Footer Nav -->
 
-      <!-- Footer Socials -->
+      <!-- 
       <div class="col-md-4 g-mb-10 g-mb-0--md">
         <ul class="list-inline g-font-size-16 text-center mb-0">
           <li class="list-inline-item g-mx-10">
@@ -47,11 +47,11 @@
           </li>
         </ul>
       </div>
-      <!-- End Footer Socials -->
+      -->
 
       <!-- Footer Copyrights -->
-      <div class="col-md-4 text-center text-md-right">
-        <small class="d-block g-font-size-default">&copy; 2018 Htmlstream. All Rights Reserved.</small>
+      <div class="col-md-12 text-center">
+        <small class="d-block g-font-size-default">&copy; 2023 TechBarber.</small>
       </div>
       <!-- End Footer Copyrights -->
     </div>

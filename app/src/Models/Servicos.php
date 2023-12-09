@@ -58,7 +58,12 @@ class Servicos{
             }else{
                 $dataCalcular = $params->data;
             }
-            $horaInicio =$pdo->prepare("SELECT
+            if(!empty($params->idUsuario)){
+                $where ="AND a.idUsuario = ".$params->idUsuario;
+            }else{
+                $where ='';
+            }
+            $comissoes =$pdo->prepare("SELECT
                             COUNT(*) as atendimento,
                             sum(s.valor)as total,
                             (sum(s.valor) * 0.50)as comissao,
@@ -69,17 +74,19 @@ class Servicos{
                             join usuarios u on u.id = a.idUsuario
                             WHERE 
                             a.status = 4 
-                            and data = :data
+                            and a.data = :data
+                            $where
                             group by u.nome
-                                    ");
-            $horaInicio->bindValue(":data", $dataCalcular);
-            $horaInicio->execute();
-            foreach ($horaInicio as $hr){
+                            ");
+            $comissoes->bindValue(":data", $dataCalcular);
+            //$comissoes->bindValue(":filtro", $where);
+            $comissoes->execute();
+            foreach ($comissoes as $cm){
                 $array[] =[
-                    "atendimento" =>$hr['atendimento'],
-                    "total" =>$hr['total'],
-                    "comissao" => $hr['comissao'],
-                    "profissional" => $hr['profissional']
+                    "atendimento" =>$cm['atendimento'],
+                    "total" =>$cm['total'],
+                    "comissao" => $cm['comissao'],
+                    "profissional" => $cm['profissional']
                 ];
             }
         } catch (Exception $ex) {

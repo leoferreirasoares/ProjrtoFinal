@@ -15,6 +15,8 @@ if($_POST['metodo'] == 'buscaAgendamentos'){
     echo listarHorariosInicio($_POST['idProfissional'],$_POST['dataSelecionada']);
 }else if($_POST['metodo']=='agendar'){
     echo agendar($_POST['idCliente'],$_POST['idUsuario'],$_POST['data'],$_POST['idHorario'],$_POST['idservico']);
+}else if($_POST['metodo']=='calcularComissao'){
+    echo comissoes($_POST['idProfissional'],$_POST['dataSelecionada']);
 }
 function buscaAgendamentos(){
     $headers = array(
@@ -195,6 +197,38 @@ function agendar($idCliente,$idUsuario,$data,$idHorario,$idServico){
     curl_setopt($dadosStatus, CURLOPT_POSTFIELDS, json_encode($post));
     $result = curl_exec($dadosStatus);
     $resultStatus = json_decode($result);
-    return $resultStatus->status;
-    
+    return $resultStatus->status;    
+}
+function comissoes($idProfissional,$dataSelecionada){
+    $post = [
+    "idUsuario" =>$idProfissional,
+    "data" =>$dataSelecionada
+    ];
+     $headers = array(
+    'Content-Type: application/json'
+    );
+    $dadosStatus = curl_init();
+    curl_setopt($dadosStatus, CURLOPT_URL, 'https://techbarber.com.br/app/servico/comissaoes');
+    curl_setopt($dadosStatus, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($dadosStatus, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($dadosStatus, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($dadosStatus, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($dadosStatus, CURLOPT_POSTFIELDS, json_encode($post));
+    $result = curl_exec($dadosStatus);
+    return montaRelatorioComissoes(json_decode($result));
+}
+
+function montaRelatorioComissoes($dados){
+    $table = '';
+    foreach ($dados as $dadosComissoes){
+        $table.='<tr>';
+        $table.='<td class="g-font-size-default g-color-black g-valign-middle g-brd-top-none g-brd-bottom g-brd-2 g-brd-gray-light-v4 g-py-10">'.$dadosComissoes->atendimento.'</td>';
+        $table.='<td class="g-font-size-default g-color-black g-valign-middle g-brd-top-none g-brd-bottom g-brd-2 g-brd-gray-light-v4 g-py-10">'.$dadosComissoes->total.'</td>';
+        $table.='<td class="g-font-size-default g-color-black g-valign-middle g-brd-top-none g-brd-bottom g-brd-2 g-brd-gray-light-v4 g-py-10">'.$dadosComissoes->comissao.'</td>';
+        $table.='<td class="g-font-size-default g-color-black g-valign-middle g-brd-top-none g-brd-bottom g-brd-2 g-brd-gray-light-v4 g-py-10">'.$dadosComissoes->profissional.'</td>';
+        $table.='<i class="fa fa-trash g-mr-3"></i>Cancelar</a>';
+        $table.='</td>';
+        $table.='</tr>';
+    }
+    return $table;    
 }

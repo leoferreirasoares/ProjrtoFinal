@@ -272,3 +272,43 @@ function limpaCampos(){
     $("#horaInicio").html('');
 
 }
+function buscaComissoes(){
+    $("#comissoes").html('');
+    var data = {
+        metodo: 'calcularComissao',
+        idProfissional:$("#profissionais").val(),
+        dataSelecionada:$("#dataComissao").val(),
+        };
+    $.ajax({
+        url: 'metodos.php',
+        type: 'POST',
+        async: false,
+        data:data,
+        success: function (retorno) {
+            $("#comissoes").html(retorno);
+        },
+        error: function (erro){
+                
+            }
+        });
+}
+function calculaComissoes(){
+    $("#comissoes").html('');
+    var data = {
+        metodo: 'calcularComissao',
+        idProfissional:$("#profissionais").val(),
+        dataSelecionada:$("#dataComissao").val(),
+        };
+    $.ajax({
+        url: 'metodos.php',
+        type: 'POST',
+        async: false,
+        data:data,
+        success: function (retorno) {
+            $("#comissoes").html(retorno);
+        },
+        error: function (erro){
+                
+            }
+        });
+}

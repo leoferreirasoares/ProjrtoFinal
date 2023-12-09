@@ -41,8 +41,21 @@ if (isset($_SESSION['id']) and  $_SESSION['id'] > 0){ ?>
                                     </div>
                                 </div>
                             </div>                           
-                            <button type="button" class="btn btn-md u-btn-primary rounded-0" onclick="calculaComissoes">Calcular</button>
+                            <button type="button" class="btn btn-md u-btn-primary rounded-0" onclick="calculaComissoes()">Calcular</button>
                         </form>
+                        <div class="js-custom-scroll g-height-500 g-pa-15 g-pa-0-30-25--md">
+                            <table class="table table-responsive-sm w-100">
+                                <thead>
+                                    <tr>                                        
+                                        <th class="g-font-weight-600 g-color-gray-dark-v6 g-brd-top-none">Nº Atendimento</th>
+                                        <th class="g-font-weight-600 g-color-gray-dark-v6 g-brd-top-none">Total</th>
+                                        <th class="g-font-weight-600 g-color-gray-dark-v6 g-brd-top-none">Comissão</th>
+                                        <th class="g-font-weight-600 g-color-gray-dark-v6 g-brd-top-none">Barbeiro</th>
+                                    </tr>
+                                </thead>
+                              <tbody id="comissoes"></tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,14 +111,16 @@ if (isset($_SESSION['id']) and  $_SESSION['id'] > 0){ ?>
   <script src="./assets/js/components/hs.dropdown.js"></script>
   <script src="./assets/js/components/hs.scrollbar.js"></script>  
   <script src="../assets/js/components/hs.count-qty.js"></script>
-  <script src="./assets/js/helpers/hs.focus-state.js"></script>
+  <script src="./assets/js/helpers/hs.focus-state.js"></script>    
+  <script src="assets/js/sweetalert2.js"></script>
   <script src="./assets/js/funcoes.js"></script>
   <!-- JS Custom -->
   <script src="./assets/js/custom.js"></script>
 
   <!-- JS Plugins Init. -->
   <script>
-    $(document).on('ready', function () {
+    $(document).on('ready', function () {  
+        listarProfissionais();
       // initialization of custom select
       $('.js-select').selectpicker();
       
