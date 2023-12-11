@@ -176,7 +176,7 @@ function buscaHorarioDisponivel(){
         Swal.fire({
             icon: "error",
             title: "Atenção!",
-            text: "Você precisa selecionar uma data antes de selecionar o profissional!",
+            text: "Você precisa selecionar uma data antes de selecionar o barbeiro!",
         });
         return false;
     }

@@ -21,6 +21,6 @@ if($resultLogin->status == 1){
     $_SESSION['email']= $resultLogin->email;
     $_SESSION['perfil']= $resultLogin->idTipoUsuario;
     $_SESSION['nome']= $resultLogin->nome;
-    $_SESSION['idComissao']= $resultLogin->idComissao;
+    $_SESSION['idBarbearia']= $resultLogin->idBarbearia;
  }
 echo $resultLogin->erro;

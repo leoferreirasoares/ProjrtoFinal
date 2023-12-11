@@ -8,7 +8,6 @@ class Servicos{
     private $id;
     private $nome;
     private $valor;
-    private $duracao;
     public function getId() {
         return $this->id;
     }
@@ -21,10 +20,6 @@ class Servicos{
         return $this->valor;
     }
 
-    public function getDuracao() {
-        return $this->duracao;
-    }
-
     public function setNome($nome): void {
         $this->nome = $nome;
     }
@@ -33,9 +28,7 @@ class Servicos{
         $this->valor = $valor;
     }
 
-    public function setDuracao($duracao): void {
-        $this->duracao = $duracao;
-    }
+    
 
     public function listar(){       
         $pdo = conectaPDO();
@@ -44,8 +37,7 @@ class Servicos{
             $array[] =[
                 "id"       =>$serv['id'],
                 "nome"     =>$serv['nome'],
-                "valor"    =>$serv['valor'],
-                "duracao"    =>$serv['duracao']
+                "valor"    =>$serv['valor']
             ];
         }
         return $array;

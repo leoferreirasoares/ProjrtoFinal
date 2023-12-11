@@ -10,7 +10,6 @@ class Usuario{
     private $nome;
     private $email;
     private $senha;
-    private $idComissao;
     
     public function getId() {
         return $this->id;
@@ -32,10 +31,7 @@ class Usuario{
         return $this->senha;
     }
 
-    public function getIdComissao() {
-        return $this->idComissao;
-    }
-
+    
     
 
     public function setIdTipoUsuario($idTipoUsuario): void {
@@ -54,9 +50,7 @@ class Usuario{
         $this->senha = $senha;
     }
 
-    public function setIdComissao($idComissao): void {
-        $this->idComissao = $idComissao;
-    }
+    
     public function logar($params){
         $pdo = conectaPDO();
        try {
@@ -96,7 +90,7 @@ class Usuario{
                     "nome"          =>$usu['nome'],
                     "email"         =>$usu['email'],
                     "idTipoUsuario" =>$usu['idTipoUsuario'],
-                    "idComissao"    =>$usu['idComissao'],
+                    "idBarbearia"    =>$usu['idBarbearia'],
                     "status"        =>1,
                     "erro"          =>''
                     

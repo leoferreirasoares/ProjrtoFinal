@@ -118,7 +118,7 @@ class Agendamento{
                                     s.id as idServico,
                                     s.nome as nomeServico,
                                     s.valor,
-                                    s.duracao
+                                    a.status
                                     from agendamentos a
                                     join usuarios u on u.id = a.idUsuario
                                     join clientes c on c.id = a.idCliente
@@ -142,8 +142,8 @@ class Agendamento{
                 "nomeCliente"   =>$ag['nomeCliente'],
                 "idServico"     =>$ag['idServico'],
                 "nomeServico"   =>$ag['nomeServico'],
-                "valor"         => formatavalorusuario($ag['valor']),
-                "duracao"       =>$ag['duracao'],               
+                "valor"         => formatavalorusuario($ag['valor']),    
+                "status"         => $ag['status'],  
             ];
         }
         return $array;

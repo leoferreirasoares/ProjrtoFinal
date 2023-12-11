@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) and  $_SESSION['id'] > 0){ ?>
                             <div class="row">
                                 <input type="hidden" name="metodo" value="comissoes">
                                 <div class="col-md-6 col-sm-12">                                    
-                                    <div class="form-group g-mb-30">
+                                    <div class="form-group g-mb-25">
                                         <label class="g-mb-10">Data</label>
                                         <input id="dataComissao" class="form-control obrigatorio" name="data" type="date">
                                           
@@ -34,8 +34,8 @@ if (isset($_SESSION['id']) and  $_SESSION['id'] > 0){ ?>
 
                                 </div>
                                 <div class="col-md-6 col-sm-12">    
-                                    <div class="form-group row g-mb-25">
-                                        <label class="col-form-label" for="profissionais">Profissional</label>
+                                    <div class="form-group g-mb-25">
+                                        <label class="col-form-label" for="profissionais">Barbeiro</label>
                                         <select class="custom-select mb-3 obrigatorio" id="profissionais" name="idUsuario"  onchange="buscaHorarioDisponivel()">
                                         </select>
                                     </div>

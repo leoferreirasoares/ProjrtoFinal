@@ -17,7 +17,7 @@ if (isset($_SESSION['id']) and  $_SESSION['id'] > 0){ ?>
       <?php include_once './menu.php'; ?>
       <!-- End Sidebar Nav -->
       <div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
-        <div class="g-pb-50">
+        <div class="g-pa-20">
             <h1 class="g-font-weight-600 g-font-size-28 g-color-black g-mb-28">Novo Agendamento</h1>
             <div class="row">
                 <div class="col-xl-12">
@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) and  $_SESSION['id'] > 0){ ?>
                             <div class="row">
                                 <input type="hidden" name="metodo" value="agendar">
                                 <div class="col-md-6 col-sm-12">                                    
-                                    <div class="form-group g-mb-30">
+                                    <div class="form-group g-mb-25">
                                         <label class="g-mb-10">Data</label>
                                         <input id="dataAgendamento" class="form-control obrigatorio" name="data" type="date" onblur="limpaCampos()">
                                           
@@ -34,8 +34,8 @@ if (isset($_SESSION['id']) and  $_SESSION['id'] > 0){ ?>
 
                                 </div>
                                 <div class="col-md-6 col-sm-12">    
-                                    <div class="form-group row g-mb-25">
-                                        <label class="col-form-label" for="profissionais">Profissional</label>
+                                    <div class="form-group g-mb-25">
+                                        <label class="col-form-label" for="profissionais">Barbeiro</label>
                                         <select class="custom-select mb-3 obrigatorio" id="profissionais" name="idUsuario"  onchange="buscaHorarioDisponivel()">
                                         </select>
                                     </div>
