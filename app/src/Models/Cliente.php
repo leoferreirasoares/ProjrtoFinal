@@ -7,9 +7,7 @@ require './config/Config.php';
 class Cliente{ 
     private $id;
     private $nome;
-    private $email;
     private $telefone;    
-    private $dataNascimanto;
     public function getId() {
         return $this->id;
     }
@@ -18,34 +16,19 @@ class Cliente{
         return $this->nome;
     }
 
-    public function getEmail() {
-        return $this->email;
-    }
-
     public function getTelefone() {
         return $this->telefone;
-    }
-
-    public function getDataNascimanto() {
-        return $this->dataNascimanto;
     }
 
     public function setNome($nome): void {
         $this->nome = $nome;
     }
 
-    public function setEmail($email): void {
-        $this->email = $email;
-    }
-
     public function setTelefone($telefone): void {
         $this->telefone = $telefone;
     }
 
-    public function setDataNascimanto($dataNascimanto): void {
-        $this->dataNascimanto = $dataNascimanto;
-    }
-    
+        
     public function listar(){
         $pdo = conectaPDO();
         $clientes = $pdo->query("SELECT * FROM clientes")->fetchAll();
@@ -53,13 +36,28 @@ class Cliente{
             $array[] =[
                 "id"                =>$cli['id'],
                 "nome"              =>$cli['nome'],
-                "email"             =>$cli['email'],
                 "telefone"          =>$cli['telefone'],
-                "dataNascimanto"    =>$cli['dataNascimanto'],
             ];
         }
         return $array;
     }
-
+    
+    public function salvar($params){
+        $pdo = conectaPDO();
+        try {
+            $insere =$pdo->prepare("
+                insert into clientes
+                      (nome,telefone)
+                VALUES(:nome,:telefone)");
+            $insere->bindValue(":nome", $params->nome);
+            $insere->bindValue(":telefone", $params->telefone);
+            $insere->execute();
+            $idCliente =  $pdo->lastInsertId();
+            $array = ["status"=>1,"id"=>id];
+        } catch (Exception $ex) {
+            $array = ["status"=>0,"id"=>''];
+        }        
+        return $array;
+    }
     
 }

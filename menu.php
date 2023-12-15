@@ -53,6 +53,38 @@
                 </a>
             </li>
           <!-- End Layouts Comissoes -->
+          <!-- Layouts CLIENTES -->
+           <li class="u-sidebar-navigation-v1-menu-item u-side-nav--has-sub-menu u-side-nav--top-level-menu-item">
+                <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="#!" data-hssm-target="#menuClientes">
+                    <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                        <i class="hs-admin-user"></i>
+                    </span>
+                    <span class="media-body align-self-center">Clientes</span>
+                    <span class="d-flex align-self-center u-side-nav--control-icon">
+                        <i class="hs-admin-angle-right"></i>
+                    </span>
+                    <span class="u-side-nav--has-sub-menu__indicator"></span>
+                </a>
+                <ul id="menuClientes" class="u-sidebar-navigation-v1-menu u-side-nav--second-level-menu mb-0">
+                    <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                        <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12" href="cadCliente.php">
+                            <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                                <i class="hs-admin-pencil-alt"></i>
+                            </span>
+                            <span class="media-body align-self-center">Cadastrar</span>
+                        </a>
+                    </li>
+                    <li class="u-sidebar-navigation-v1-menu-item u-side-nav--second-level-menu-item">
+                        <a class="media u-side-nav--second-level-menu-link g-px-15 g-py-12" href="consultaCliente.php">
+                            <span class="d-flex align-self-center g-mr-15 g-mt-minus-1">
+                                <i class="hs-admin-list"></i>
+                            </span>
+                            <span class="media-body align-self-center">Consultar</span>
+                        </a>
+                    </li>           
+                </ul>
+            </li>
+            <!-- End CLIENTES -->
         </ul>
 </div>
 

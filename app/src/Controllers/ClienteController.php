@@ -36,4 +36,19 @@ class ClienteController {
             ->withHeader('Content-type', 'application/json');
         return $return;        
     }
+    
+    /**
+     * Cria um cliente
+     * @param [type] $request
+     * @param [type] $response
+     * @param [type] $args
+     * @return Response
+     */
+    public function criarCliente($request, $response, $args) {
+        $params = (object) $request->getParams();
+        $cliente = new Cliente();
+        $return = $response->withJson($cliente->salvar($params), 201)
+            ->withHeader('Content-type', 'application/json');
+        return $return;       
+    }
 }

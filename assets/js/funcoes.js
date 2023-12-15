@@ -244,6 +244,7 @@ function agendar(formulario){
             if(result == 1){
                     $('#'+formulario+ " input[type=date]").val("");
                     $('#'+formulario+' select').val("");
+                    $('#'+formulario+ " input[type=text]").val("");
                     
                     Swal.fire({
                         icon: "success",
@@ -306,6 +307,23 @@ function calculaComissoes(){
         data:data,
         success: function (retorno) {
             $("#comissoes").html(retorno);
+        },
+        error: function (erro){
+                
+            }
+        });
+}
+function buscaClientes(){
+    var data = {
+        metodo: 'buscaClientes'
+        };
+    $.ajax({
+        url: 'metodos.php',
+        type: 'POST',
+        async: false,
+        data:data,
+        success: function (retorno) {           
+            $("#tabelaClientes").html(retorno);
         },
         error: function (erro){
                 

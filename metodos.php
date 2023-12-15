@@ -17,6 +17,10 @@ if($_POST['metodo'] == 'buscaAgendamentos'){
     echo agendar($_POST['idCliente'],$_POST['idUsuario'],$_POST['data'],$_POST['idHorario'],$_POST['idservico']);
 }else if($_POST['metodo']=='calcularComissao'){
     echo comissoes($_POST['idProfissional'],$_POST['dataSelecionada']);
+}else if($_POST['metodo']=='cadCliente'){
+    echo cadastarCliente($_POST['nome'],$_POST['telefone']);
+}else if($_POST['metodo'] == 'buscaClientes'){
+    echo buscaClientes();
 }
 function buscaAgendamentos(){
     $headers = array(
@@ -231,4 +235,47 @@ function montaRelatorioComissoes($dados){
         $table.='</tr>';
     }
     return $table;    
+}
+function cadastarCliente($nome,$telefone){
+    $post = [
+    "nome" => $nome,
+    "telefone" =>$telefone
+    ];
+     $headers = array(
+    'Content-Type: application/json'
+    );
+    $dadosStatus = curl_init();
+    curl_setopt($dadosStatus, CURLOPT_URL, 'https://techbarber.com.br/app/cliente');
+    curl_setopt($dadosStatus, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($dadosStatus, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($dadosStatus, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($dadosStatus, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($dadosStatus, CURLOPT_POSTFIELDS, json_encode($post));
+    $result = curl_exec($dadosStatus);
+    $resultStatus = json_decode($result);
+    return $resultStatus->status;    
+}
+function buscaClientes(){
+    $headers = array(
+    'Content-Type: application/json'
+    );
+    $dadosCliente = curl_init();
+           curl_setopt($dadosCliente, CURLOPT_URL, 'https://techbarber.com.br/app/cliente');
+           curl_setopt($dadosCliente, CURLOPT_CUSTOMREQUEST, "GET");
+           curl_setopt($dadosCliente, CURLOPT_HTTPHEADER, $headers);
+           curl_setopt($dadosCliente, CURLOPT_RETURNTRANSFER, true);
+           curl_setopt($dadosCliente, CURLOPT_SSL_VERIFYPEER, false);
+           $resultClientes = curl_exec($dadosCliente);
+    return montaRelatorioClientes(json_decode($resultClientes));
+}
+
+function montaRelatorioClientes($dados){
+    $table = '';
+    foreach ($dados as $dadosClientes){
+        $table.='<tr>';
+        $table.='<td class="g-font-size-default g-color-black g-valign-middle g-brd-top-none g-brd-bottom g-brd-2 g-brd-gray-light-v4 g-py-10">'.$dadosClientes->nome.'</td>';
+        $table.='<td class="g-font-size-default g-color-black g-valign-middle g-brd-top-none g-brd-bottom g-brd-2 g-brd-gray-light-v4 g-py-10">'.$dadosClientes->telefone.'</td>';
+        $table.='</tr>';
+    }
+    return $table;   
 }

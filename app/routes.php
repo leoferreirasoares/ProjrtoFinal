@@ -24,6 +24,7 @@ $app->group('/agendamento', function() {
 
 $app->group('/cliente', function() {
     $this->get('', '\App\Controllers\ClienteController:listaCliente');
+    $this->post('', '\App\Controllers\ClienteController:criarCliente');
 });
 $app->group('/servico', function() {
     $this->get('', '\App\Controllers\ServicosController:listaServicos');
